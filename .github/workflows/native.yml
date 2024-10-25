@@ -195,7 +195,7 @@ jobs:
             apt-get install -q -y curl openjdk-8-jdk build-essential libz-dev
             # Install sbt inside the docker image
             mkdir -p "$HOME/bin/"
-            curl -sL https://raw.githubusercontent.com/sbt/sbt/v1.9.9/sbt > "$HOME/bin/sbt"
+            curl -sL https://raw.githubusercontent.com/sbt/sbt/v1.10.4/sbt > "$HOME/bin/sbt"
             chmod +x "$HOME/bin/sbt"
           run: |
             # Use sbt inside the Docker image
