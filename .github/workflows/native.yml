@@ -40,6 +40,12 @@ jobs:
       - name: Setup Windows C++ toolchain
         uses: ilammy/msvc-dev-cmd@v1
         if: ${{ matrix.os == 'windows-latest' }}
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          java-version: '23'
+          native-image-musl: 'true'
+          set-java-home: 'false'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         shell: bash
         run: |
@@ -91,6 +97,12 @@ jobs:
       - name: Setup sbt
         uses: sbt/setup-sbt@v1
       - run: git fetch --tags || true
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          java-version: '23'
+          native-image-musl: 'true'
+          set-java-home: 'false'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
         shell: bash
