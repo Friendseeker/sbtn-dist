@@ -13,7 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          # Keep this to ubuntu-20.04 to use older GLIBC
+          - os: ubuntu-20.04
             uploaded_filename: sbtn-x86_64-pc-linux
             local_path: client/target/bin/sbtn
           - os: windows-latest
@@ -40,12 +41,6 @@ jobs:
       - name: Setup Windows C++ toolchain
         uses: ilammy/msvc-dev-cmd@v1
         if: ${{ matrix.os == 'windows-latest' }}
-      - uses: graalvm/setup-graalvm@v1
-        with:
-          java-version: '23'
-          native-image-musl: 'true'
-          set-java-home: 'false'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
         shell: bash
         run: |
@@ -97,12 +92,6 @@ jobs:
       - name: Setup sbt
         uses: sbt/setup-sbt@v1
       - run: git fetch --tags || true
-      - uses: graalvm/setup-graalvm@v1
-        with:
-          java-version: '23'
-          native-image-musl: 'true'
-          set-java-home: 'false'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build
         shell: bash
