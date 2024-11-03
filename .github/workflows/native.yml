@@ -13,7 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          # Keep this to ubuntu-20.04 to use older GLIBC
+          - os: ubuntu-20.04
             uploaded_filename: sbtn-x86_64-pc-linux
             local_path: client/target/bin/sbtn
           - os: windows-latest
