@@ -2,7 +2,7 @@ name: Native Image
 on:
   push:
     branches:
-      - develop
+      - '*'
   pull_request:
   release:
     types: [published]
@@ -23,12 +23,12 @@ jobs:
     env:
       JAVA_OPTS: -Xms2048M -Xmx2048M -Xss6M -XX:ReservedCodeCacheSize=256M
     steps:
-      - name: Checkout sbt/sbt
+      - name: Checkout Friendseeker/sbt
         uses: actions/checkout@v4
         with:
-          repository: sbt/sbt
+          repository: Friendseeker/sbt
           # Make sure the native-image-macos and native-image-aarch64-pc-linux-linux also updated
-          ref: 1.10.x
+          ref: jansi-bump
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
@@ -78,11 +78,11 @@ jobs:
     env:
       JAVA_OPTS: -Xms2048M -Xmx2048M -Xss6M -XX:ReservedCodeCacheSize=256M
     steps:
-      - name: Checkout sbt/sbt
+      - name: Checkout Friendseeker/sbt
         uses: actions/checkout@v4
         with:
-          repository: sbt/sbt
-          ref: 1.10.x
+          repository: Friendseeker/sbt
+          ref: jansi-bump
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
@@ -153,11 +153,11 @@ jobs:
     env:
       JAVA_OPTS: -Xms2048M -Xmx2048M -Xss6M -XX:ReservedCodeCacheSize=256M
     steps:
-      - name: Checkout sbt/sbt
+      - name: Checkout Friendseeker/sbt
         uses: actions/checkout@v4
         with:
-          repository: sbt/sbt
-          ref: 1.10.x
+          repository: Friendseeker/sbt
+          ref: jansi-bump
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
